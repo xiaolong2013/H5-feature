@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>html5 history</title>
+</head>
+<body>
+   <div>
+      <a href="www.baidu.com">百度</a>
+   </div>  
+   <div> 
+   	  <a href="www.baidu.com">百度</a> 
+   </div>
+   <div> 
+      <a href="www.google.com">google</a>
+   </div> 
+   <script>
+      //3个 api
+      //history.pushState 改变浏览器的地址 页面不刷新
+      //history.replaceState 替换浏览器的地址 页面不刷新
+      //popstate 监听浏览器地址的变化(包括前进和后退)
+      //对于自定义参数 只能在 所在的页面才能获得
+      //url 限制 页面中只能
+      var state = {
+      	  id:2,
+      	  name:'hello'
+      }
+      window.history.pushState(state,"hello",'hello') 
+      document.addEventListener("popstate",function(e){
+            //到了当前页的时候 才会有 state 参数
+            //别的页面没有 state 参数
+            var state = e.state;
+            if(state){
+                window.history.replaceState({age:2},"hhh","haha");
+            }
+      });
+   </script>  
+</body>
+</html> 
